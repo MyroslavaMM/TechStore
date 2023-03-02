@@ -7,6 +7,7 @@ import UserRoom from "./components/UserRoom/index.js";
 import ShoppingBag from "./components/ShoppingBag/index.js";
 import RegistrationPage from "./components/RegistrationPage/index.js";
 import GoodsPage from "./components/GoodsPage/index.js";
+import Catalog from "./components/Catalog/index.js";
 import "./App.css";
 
 function App() {
@@ -15,10 +16,11 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/room" element={<UserRoom />} />
+        <Route path="/my-room" element={<UserRoom />} />
         <Route path="/bag" element={<ShoppingBag />} />
         <Route path="/registration" element={<RegistrationPage />} />
         <Route path="/goods" element={<GoodsPage />} />
+        <Route path="/catalog" element={<Catalog />} />
       </Routes>
       <Footer />
     </BrowserRouter>

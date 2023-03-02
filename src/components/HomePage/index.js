@@ -1,5 +1,5 @@
 import React from "react";
-import Catalog from "../Catalog/index.js";
+import Categories from "../Categories/index.js";
 import "./index.css";
 
 function HomePage() {
@@ -12,7 +12,7 @@ function HomePage() {
             <p className="subtitle">Наші спеціалісти мають великий досвід, наші спеціалісти мають.</p>
           </div>
         </div>
-        <Catalog />
+        <Categories />
       </div>
     </div>
   );
