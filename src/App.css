@@ -1,39 +1,61 @@
 .App {
-  text-align: center;
+  margin: 0 auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.main {
+  max-width: 1440px;
+  margin: 0 auto;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
+.banner {
+  background: url("../images/banner.webp");
+  display: grid;
+  background-position: 50%;
+  background-size: cover;
+  grid-template-columns: 14rem;  
+  width: 100%;
+  height: auto;
+}
+
+.banner-wrap {
+  padding: 2.8rem 9.1%;
+}
+
+.title,
+.subtitle {
+  margin: 0;
+}
+
+.title {
+  font-size: 1.75rem;
+  line-height: 4rem;
+  color: #000;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 0.75rem;
+  color: #000;
+  font-weight: 400;
+}
+
+@media screen and (min-width: 769px) {
+  .banner {
+    grid-template-columns: 38rem;
   }
-}
 
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-}
-
-.App-link {
-  color: rgb(112, 76, 182);
-}
-
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
+  .banner-wrap {
+    padding: 8.1rem 0 5rem 32%;
   }
-  50% {
-    transform: translateY(10px);
+
+  .title {
+    font-size: 3.5rem;
+
   }
-  100% {
-    transform: translateY(0px);
+  
+  .subtitle {
+    font-size: 1rem;
+    padding-right: 6rem;
   }
 }

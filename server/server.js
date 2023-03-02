@@ -18,7 +18,6 @@ app.use(express.static("public"));
 
 app.get("/api/clients", async (req, res) => {
   const clients = await Client.find({});
-  console.log(clients);
   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
   res.send(clients);
 });
@@ -44,6 +43,12 @@ app.post("/api/clients", async (req, res) => {
   } catch (error) {
     res.status(422).send("Not able to add a client");
   }
+});
+
+app.get("/api/goods", async (req, res) => {
+  const goods = await Goods.find({});
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.send(goods);
 });
 
 app.listen(8080, () => {

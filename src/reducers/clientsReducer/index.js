@@ -1,16 +1,16 @@
 import axios from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const getAllClients = createAsyncThunk("/api/clients/getAllClients", async () => {
+export const getAllClients = createAsyncThunk("clients/getAllClients", async () => {
   try {
     const response = await axios.get("http://localhost:8080/api/clients");
     return response.data;
   } catch (error) {
-    throw new Error("Not able to fetch data");
+    throw new Error("Not able to fetch clients");
   }
 });
 
-export const createClient = createAsyncThunk("/api/clients/createClient", async (client) => {
+export const createClient = createAsyncThunk("clients/createClient", async (client) => {
   const { name, email, password } = client;
   try {
     const response = await axios.post(`http://localhost:8080/api/clients`, { name, email, password });
@@ -20,7 +20,7 @@ export const createClient = createAsyncThunk("/api/clients/createClient", async 
   }
 });
 
-export const createClientGoods = createAsyncThunk("/api/clients/createClientGoods", async (client) => {
+export const createClientGoods = createAsyncThunk("clients/createClientGoods", async (client) => {
   const { id, goods } = client;
   try {
     const response = await axios.post(`http://localhost:8080/api/clients`, { id, goods });
