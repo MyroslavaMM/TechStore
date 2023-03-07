@@ -1,16 +1,8 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { getAllClients } from "../../reducers/clientsReducer/index.js";
+import React from "react";
 import LogInForm from "../LogInForm/index.js";
 import "./index.css";
 
 function UserRoom() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getAllClients());
-  }, []);
-
   const handleLogOut = () => {
     window.localStorage.removeItem("user");
     document.location.reload();

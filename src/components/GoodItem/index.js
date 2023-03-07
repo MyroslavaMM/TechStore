@@ -1,17 +1,12 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getAllGoods, selectAllGoods } from "../../reducers/goodsReducer/index.js";
+import { selectAllGoods } from "../../reducers/goodsReducer/index.js";
 import "./index.css";
 
 function GoodItem() {
-  const dispatch = useDispatch();
   const goods = useSelector(selectAllGoods);
   const { id } = useParams();
-
-  useEffect(() => {
-    dispatch(getAllGoods());
-  }, []);
 
   const good = goods.find(({ _id }) => _id === id);
 

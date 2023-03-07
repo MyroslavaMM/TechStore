@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getAllGoods, selectAllGoods, addToBag, OPTIONS } from "../../reducers/goodsReducer/index.js";
@@ -10,10 +10,6 @@ function CatalogComponent() {
   const goods = useSelector(selectAllGoods);
 
   const { category } = useParams();
-
-  useEffect(() => {
-    dispatch(getAllGoods());
-  }, []);
 
   const getGoodByCategory = goods.filter((item) => item.category === category);
 
