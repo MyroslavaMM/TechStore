@@ -13,7 +13,7 @@ export const getAllClients = createAsyncThunk("clients/getAllClients", async () 
 export const createClient = createAsyncThunk("clients/createClient", async (client) => {
   const { name, email, password } = client;
   try {
-    const response = await axios.post(`http://localhost:8080/api/clients`, { name, email, password });
+    const response = await axios.post("http://localhost:8080/api/clients", { name, email, password });
     return response.data;
   } catch (error) {
     throw new Error("Not able to create a client");

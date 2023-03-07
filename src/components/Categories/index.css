@@ -20,6 +20,7 @@
 .category-link {
     color: #444345;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .category-link:hover {

@@ -11,23 +11,36 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://192.168.31.106:3000"
+    origin: "*"
   })
 );
 app.use(express.static("public"));
+app.use(express.json());
 
 app.get("/api/clients", async (req, res) => {
   const clients = await Client.find({});
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.header({
+    "Access-Control-Allow-Origin": "http://localhost:3000",
+    "Access-Control-Allow-Methods": "POST, PUT, PATCH, GET, DELETE, OPTIONS",
+    "Access-Control-Allow-Headers": "Origin, X-Api-Key, X-Requested-With, Content-Type, Accept, Authorization"
+  });
   res.send(clients);
 });
 
 app.post("/api/clients", async (req, res) => {
-  const emailRegExp = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
-  const clientRequest = req.body;
+  const { name, email, password } = req.body;
   try {
-    const newClient = new Client({ ...clientRequest });
+    const newClient = new Client({
+      name: name,
+      email: email,
+      password: password
+    });
     const saveClient = await newClient.save();
+    res.header({
+      "Access-Control-Allow-Origin": "http://localhost:3000",
+      "Access-Control-Allow-Methods": "POST, PUT, PATCH, GET, DELETE, OPTIONS",
+      "Access-Control-Allow-Headers": "Origin, X-Api-Key, X-Requested-With, Content-Type, Accept, Authorization"
+    });
     res.send(saveClient);
   } catch (error) {
     res.status(422).send("Not able to add a client");
@@ -39,6 +52,7 @@ app.post("/api/clients", async (req, res) => {
   try {
     const newClientGoods = new ClientGoods({ ...clientRequest });
     const saveClientGoods = await newClientGoods.save();
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
     res.send(saveClientGoods);
   } catch (error) {
     res.status(422).send("Not able to add a client");

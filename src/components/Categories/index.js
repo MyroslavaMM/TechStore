@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { getAllGoods, selectAllGoods } from "../../reducers/goodsReducer/index.js";
 import "./index.css";
 
@@ -12,11 +13,15 @@ function Categories() {
     dispatch(getAllGoods());
   }, []);
 
+  let categories = [...new Set(goods.map((good) => good.category))];
+
   const renderCategories = () => {
-    return goods.map(({ category }) => {
+    return categories.map((category, index) => {
       return (
-        <li className="category-item" key={category}>
-          <a className="category-link">{category}</a>
+        <li className="category-item" key={index}>
+          <Link to={`/catalog/${category}`} className="category-link">
+            {category}
+          </Link>
         </li>
       );
     });

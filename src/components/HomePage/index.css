@@ -9,7 +9,7 @@
   }
   
   .banner {
-    background: url("../../../images/banner.webp");
+    background: url("../../images/banner.webp");
     display: grid;
     background-position: 50%;
     background-size: cover;
