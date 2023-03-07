@@ -1,17 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getAllGoods, selectAllGoods, addToBag, OPTIONS } from "../../reducers/goodsReducer/index.js";
-import Tablet from "../../images/tablet.webp";
+import phoneImage from "../../images/phone.webp";
 import "./index.css";
 
-function TabletPage() {
+function CatalogComponent() {
   const dispatch = useDispatch();
   const goods = useSelector(selectAllGoods);
+
+  const { category } = useParams();
 
   useEffect(() => {
     dispatch(getAllGoods());
   }, []);
+
+  const getGoodByCategory = goods.filter((item) => item.category === category);
 
   const handleAddToBag = (id, title, price) => {
     dispatch(addToBag({ id: id, title: title, price: price }));
@@ -29,13 +33,11 @@ function TabletPage() {
     dispatch(getAllGoods(event.target.value));
   };
 
-  const desktopCategoryOptions = goods.filter((good) => good.category === "Планшети");
-
   const renderItems = () => {
-    return desktopCategoryOptions.map(({ _id, title, price }) => {
+    return getGoodByCategory.map(({ _id, title, price }) => {
       return (
         <div className="good" key={title}>
-          <img src={Tablet} className="good-tablet" />
+          <img src={phoneImage} className="good-img" />
           <Link to={`/${_id}`} className="good-title">
             {title}
           </Link>
@@ -48,15 +50,16 @@ function TabletPage() {
     });
   };
   return (
-    <>
+    <div>
+      <p className="category-title">{category}</p>
       <div className="sorting">
         <select className="sorting-select" onChange={handleSort}>
           {renderOptions()}
         </select>
       </div>
       <div className="good-block">{renderItems()}</div>
-    </>
+    </div>
   );
 }
 
-export default TabletPage;
+export default CatalogComponent;

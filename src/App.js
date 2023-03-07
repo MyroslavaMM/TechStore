@@ -8,8 +8,7 @@ import ShopBag from "./components/ShopBag/index.js";
 import RegistrationPage from "./components/RegistrationPage/index.js";
 import GoodsPage from "./components/GoodsPage/index.js";
 import Catalog from "./components/Catalog/index.js";
-import MobilePage from "./components/CatalogComponents/MobilePage.js";
-import TabletPage from "./components/CatalogComponents/TabletPage.js";
+import CatalogComponent from "./components/CatalogComponents/index.js";
 import GoodItem from "./components/GoodItem/index.js";
 import "./App.css";
 
@@ -24,9 +23,8 @@ function App() {
         <Route path="/registration" element={<RegistrationPage />} />
         <Route path="/goods" element={<GoodsPage />} />
         <Route path="/catalog" element={<Catalog />} />
-        <Route path="/catalog/Мобільні телефони" element={<MobilePage />} />
+        <Route path="/catalog/:category" element={<CatalogComponent />} />
         <Route path="/:id" element={<GoodItem />} />
-        <Route path="/catalog/Планшети" element={<TabletPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
