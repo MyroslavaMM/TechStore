@@ -1,0 +1,38 @@
+.bag-list-block {
+    padding-left: 5%;
+}
+
+.bag-title {
+    font-size: 1.5rem;
+}
+.bag-list {
+    display: grid;
+    grid-template-columns: repeat(1 , 1fr);
+    max-width: 100%;
+    padding-left: 0;
+    justify-items: start;
+    align-items: center;
+}
+
+.bag-item {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    list-style: none;
+    width: 100%;
+    border-bottom: 1px solid #e8e7e3;
+    padding-top: 2rem;
+    align-items: center;
+}
+
+.button-block {
+    text-align: center;
+}
+
+.bag-item-title {
+    text-decoration: none;
+    color: #000;
+}
+
+.bag-item-title:hover {
+    color: red;
+}

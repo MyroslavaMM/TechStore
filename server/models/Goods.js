@@ -4,7 +4,7 @@ const goodsSchema = new Schema({
   title: String,
   brand: String,
   category: String,
-  price: String,
+  price: Number,
   description: String
 });
 

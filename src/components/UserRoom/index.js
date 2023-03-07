@@ -18,12 +18,12 @@ function UserRoom() {
 
   if (window.localStorage.getItem("user")) {
     return (
-      <>
-        <div>Client Page</div>
+      <div className="user-page-block">
+        <p className="user-page-title">Моя сторінка</p>
         <button className="submit" onClick={handleLogOut}>
           Вийти
         </button>
-      </>
+      </div>
     );
   } else {
     return (

@@ -5,7 +5,6 @@ import axios from "axios";
 import "./database.js";
 import Client from "./models/Client.js";
 import Goods from "./models/Goods.js";
-import ClientGoods from "./models/ClientGoods.js";
 
 const app = express();
 
@@ -19,6 +18,7 @@ app.use(express.json());
 
 app.get("/api/clients", async (req, res) => {
   const clients = await Client.find({});
+
   res.header({
     "Access-Control-Allow-Origin": "http://localhost:3000",
     "Access-Control-Allow-Methods": "POST, PUT, PATCH, GET, DELETE, OPTIONS",
@@ -60,7 +60,18 @@ app.post("/api/clients", async (req, res) => {
 });
 
 app.get("/api/goods", async (req, res) => {
+  const sort = req.query.sort;
   const goods = await Goods.find({});
+
+  if (!sort) {
+    return;
+  }
+  if (sort === "desc") {
+    goods.sort((a, b) => Number(a.price) - Number(b.price));
+  } else {
+    goods.sort((a, b) => Number(b.price) - Number(a.price));
+  }
+  console.log(sort);
   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
   res.send(goods);
 });

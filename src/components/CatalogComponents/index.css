@@ -7,6 +7,11 @@
     padding: 2rem 6%;
 }
 
+.sorting {
+    padding: 2rem 6%;
+
+}
+
 .good {
     display: flex;
     flex-direction: column;
@@ -27,8 +32,22 @@
 .good-title {
     text-decoration: none;
     color: #000;
+    cursor: pointer;
 }
 
 .good-title:hover {
     color: #01944b;
+}
+
+.sorting {
+    text-align: start;
+}
+
+.sorting-select {
+    outline: none;
+    font-size: 1rem;
+}
+
+.sorting-select:hover {
+    border: 1px solid lightblue;
 }

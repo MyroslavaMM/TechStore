@@ -1,6 +1,23 @@
+.user-page-block {
+    padding-left: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 .user-room {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.user-page-title {
+    font-size: 1rem;
+}
+
+@media screen and (min-width: 769px) {
+    .user-page-title {
+        font-size: 1.5rem;
+    }
 }

@@ -20,16 +20,6 @@ export const createClient = createAsyncThunk("clients/createClient", async (clie
   }
 });
 
-export const createClientGoods = createAsyncThunk("clients/createClientGoods", async (client) => {
-  const { id, goods } = client;
-  try {
-    const response = await axios.post(`http://localhost:8080/api/clients`, { id, goods });
-    return response.data;
-  } catch (error) {
-    throw new Error("Not able to add a client");
-  }
-});
-
 const clientsSlice = createSlice({
   name: "clientsSlice",
   initialState: {

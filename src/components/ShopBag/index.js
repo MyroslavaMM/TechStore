@@ -1,16 +1,28 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { selectAddToBag } from "../../reducers/goodsReducer/index.js";
+import { selectAddToBag, removeBagItem } from "../../reducers/goodsReducer/index.js";
+import "./index.css";
 
 function ShopBag() {
+  const dispatch = useDispatch();
   const bagGoods = useSelector(selectAddToBag);
 
+  const handleRemoveBagItem = (id) => {
+    dispatch(removeBagItem(id));
+  };
+
   const renderBagFood = () => {
-    return bagGoods.map(({ id, title }) => {
+    return bagGoods.map(({ id, title, price }) => {
       return (
-        <li key={id}>
-          <Link>{title}</Link>
+        <li key={id} className="bag-item">
+          <Link className="bag-item-title">{title}</Link>
+          <p>{price}</p>
+          <div className="button-block">
+            <button className="submit" onClick={() => handleRemoveBagItem(id)}>
+              Видалити з кошика
+            </button>
+          </div>
         </li>
       );
     });
@@ -18,16 +30,16 @@ function ShopBag() {
 
   if (bagGoods.length === 0) {
     return (
-      <div>
-        <p>Кошик порожній</p>
+      <div className="bag-list-block">
+        <p className="bag-title">Кошик порожній</p>
       </div>
     );
   }
 
   return (
-    <div>
-      <p>Кошик</p>
-      <ul>{renderBagFood()}</ul>
+    <div className="bag-list-block">
+      <p className="bag-title">Кошик</p>
+      <ul className="bag-list">{renderBagFood()}</ul>
     </div>
   );
 }

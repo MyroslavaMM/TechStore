@@ -38,7 +38,11 @@
 @media screen and (min-width: 769px) {
     .category {
         display: block;
-        width: 24%;
+        width: 30%;
         padding: 0 2rem;
+    }
+
+    .category-link {
+        font-size: 1rem;
     }
 }

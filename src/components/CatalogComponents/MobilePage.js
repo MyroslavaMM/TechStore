@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllGoods, selectAllGoods, addToBag } from "../../reducers/goodsReducer/index.js";
 import { Link } from "react-router-dom";
+import { getAllGoods, selectAllGoods, addToBag, OPTIONS } from "../../reducers/goodsReducer/index.js";
 import phoneImage from "../../images/phone.webp";
 import "./index.css";
 
@@ -17,14 +17,28 @@ function MobilePage() {
     dispatch(addToBag({ id: id, title: title, price: price }));
   };
 
+  const renderOptions = () => {
+    return Object.values(OPTIONS).map((optionItem) => (
+      <option key={optionItem} value={optionItem}>
+        {optionItem}
+      </option>
+    ));
+  };
+
+  const handleSort = (event) => {
+    dispatch(getAllGoods(event.target.value));
+  };
+
   const mobileCategoryOptions = goods.filter((good) => good.category === "Мобільні телефони");
 
-  const renderOptions = () => {
+  const renderItems = () => {
     return mobileCategoryOptions.map(({ _id, title, price }) => {
       return (
         <div className="good" key={title}>
           <img src={phoneImage} className="good-img" />
-          <Link className="good-title">{title}</Link>
+          <Link to={`/${_id}`} className="good-title">
+            {title}
+          </Link>
           <p className="good-price">{price}</p>
           <button className="submit" onClick={() => handleAddToBag(_id, title, price)}>
             Додати до корзини
@@ -33,7 +47,16 @@ function MobilePage() {
       );
     });
   };
-  return <div className="good-block">{renderOptions()}</div>;
+  return (
+    <>
+      <div className="sorting">
+        <select className="sorting-select" onChange={handleSort}>
+          {renderOptions()}
+        </select>
+      </div>
+      <div className="good-block">{renderItems()}</div>
+    </>
+  );
 }
 
 export default MobilePage;
