@@ -66,10 +66,10 @@ app.get("/api/goods", async (req, res) => {
   if (!sort) {
     return;
   }
-  if (sort === "desc") {
-    goods.sort((a, b) => Number(a.price) - Number(b.price));
-  } else {
+  if (sort === "Від дорогих до дешевих") {
     goods.sort((a, b) => Number(b.price) - Number(a.price));
+  } else {
+    goods.sort((a, b) => Number(a.price) - Number(b.price));
   }
   console.log(sort);
   res.header("Access-Control-Allow-Origin", "http://localhost:3000");

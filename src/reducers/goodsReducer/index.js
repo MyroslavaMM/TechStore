@@ -3,8 +3,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const OPTIONS = {
   DEFAULT: "Сортувати",
-  DESC: "desc",
-  ASC: "asc"
+  DESC: "Від дорогих до дешевих",
+  ASC: "Від дешевих до дорогих"
 };
 
 const bagItems = localStorage.getItem("bagItem") !== null ? JSON.parse(localStorage.getItem("bagItem")) : [];
