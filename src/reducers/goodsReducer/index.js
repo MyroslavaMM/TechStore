@@ -28,6 +28,7 @@ const goodsSlice = createSlice({
     addToBag(state, action) {
       const { id, title, price } = action.payload;
       state.bag.push({ id: id, title: title, price: price });
+
       localStorage.setItem("bagItem", JSON.stringify(state.bag.map((item) => item)));
     },
     removeBagItem(state, action) {

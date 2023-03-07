@@ -29,13 +29,22 @@
 .header-shop-bag {
     width: 10%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     cursor: pointer;
+    align-items: center;
+    position: relative;
 }
 .shop-bag {
     width: 60%;
 }
+
+.shop-bag-count {
+    color: #FFF;
+        position: absolute;
+        bottom: 0;
+        right: -7%;
+}
+
 .shop-bag:hover {
     fill: #01944b;
 }
