@@ -39,6 +39,10 @@
     color: #000;
     font-weight: 400;
   }
+
+  .categories-block {
+    display: none;
+  }
   
   @media screen and (min-width: 769px) {
     .banner {
@@ -57,5 +61,9 @@
     .subtitle {
       font-size: 1rem;
       padding-right: 6rem;
+    }
+
+    .categories-block {
+      display: block;
     }
   }

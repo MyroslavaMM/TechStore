@@ -12,7 +12,9 @@ function HomePage() {
             <p className="subtitle">Наші спеціалісти мають великий досвід, наші спеціалісти мають.</p>
           </div>
         </div>
-        <Categories />
+        <div className="categories-block">
+          <Categories />
+        </div>
       </div>
     </div>
   );

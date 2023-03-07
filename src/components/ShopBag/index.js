@@ -16,7 +16,9 @@ function ShopBag() {
     return bagGoods.map(({ id, title, price }) => {
       return (
         <li key={id} className="bag-item">
-          <Link className="bag-item-title">{title}</Link>
+          <Link to={`/${id}`} className="bag-item-title">
+            {title}
+          </Link>
           <p>{price}</p>
           <div className="button-block">
             <button className="submit" onClick={() => handleRemoveBagItem(id)}>
